@@ -1,0 +1,5 @@
+leak:libglfw.so
+leak:libgtk
+leak:libpango
+leak:libX11
+leak:libGL
