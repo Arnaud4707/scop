@@ -14,7 +14,8 @@ void main()
     float r = fract(gl_PrimitiveID * 0.137);
     float g = fract(gl_PrimitiveID * 0.517);
     float b = fract(gl_PrimitiveID * 0.731);
-    vec3 c = vec3(r, g, b);
+    float gray = fract(float(gl_PrimitiveID) * 0.137);
+    vec3 c = vec3(gray);
     vec3 ct = texture(t , TexCoords).rgb;
     vec3 cc = mix(c, ct, factor);
 
