@@ -17,7 +17,7 @@ bool 		firstMouse = true;
 float 		factor = 1.0;
 bool 		onTexture = false;
 bool		exist_texture = true;
-bool		texWorld = true;
+bool		texWorld = false;
 vec3 		cursorColor = {1.f, 0.f, 0.f};
 Light HighLight =
 	{vec3 (1.2f, 1.0f, 2.0f),
