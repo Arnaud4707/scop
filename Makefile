@@ -3,7 +3,7 @@ NAME= prog
 MODEL ?= 0
 
 CXX= c++
-CXXFLAGS= -Wall -Wextra -std=c++11 -D MODEL=$(MODEL) -g3
+CXXFLAGS= -Wall -Wextra -std=c++11 -D MODEL=$(MODEL) -I ./include -g3
 LDFLAGS= -lGL -lglfw -ldl -g3
 HEADER= include/header.hpp include/shader.hpp include/camera.hpp include/ObjectBlender.hpp \
 		include/fonction_math.hpp include/Vec2.hpp include/Vec3.hpp include/Vec4.hpp \
@@ -16,20 +16,20 @@ OBJ= $(addprefix  $(DIR_OBJ), $(PATH_SRC:.cpp=.o))
 OBJ_GLAD= obj/glad.o
 GLAD= glad.c
 
-$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp -I"$HOME/local/include $(HEADER)
+$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp $(HEADER)
 	mkdir -p obj
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ) $(OBJ_GLAD) -I"$HOME/local/include $(HEADER)
+$(NAME): $(OBJ) $(OBJ_GLAD) $(HEADER)
 	$(CXX) $(OBJ) $(OBJ_GLAD) $(LDFLAGS) -o $(NAME)
 
-$(OBJ_GLAD): -I"$HOME/local/include $(GLAD)
+$(OBJ_GLAD): $(GLAD)
 	mkdir -p obj
 	$(CXX) $(CXXFLAGS) -c $(GLAD) -o $(OBJ_GLAD)
 
 all: $(NAME)
 
-clean: 
+clean:
 	rm -rf $(OBJ) $(DIR_OBJ) $(OBJ_GLAD)
 
 fclean: clean 
