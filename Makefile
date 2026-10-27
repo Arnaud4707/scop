@@ -16,14 +16,14 @@ OBJ= $(addprefix  $(DIR_OBJ), $(PATH_SRC:.cpp=.o))
 OBJ_GLAD= obj/glad.o
 GLAD= glad.c
 
-$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp $(HEADER)
+$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp -I"$HOME/local/include $(HEADER)
 	mkdir -p obj
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ) $(OBJ_GLAD) $(HEADER)
+$(NAME): $(OBJ) $(OBJ_GLAD) -I"$HOME/local/include $(HEADER)
 	$(CXX) $(OBJ) $(OBJ_GLAD) $(LDFLAGS) -o $(NAME)
 
-$(OBJ_GLAD): $(GLAD)
+$(OBJ_GLAD): -I"$HOME/local/include $(GLAD)
 	mkdir -p obj
 	$(CXX) $(CXXFLAGS) -c $(GLAD) -o $(OBJ_GLAD)
 
