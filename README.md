@@ -23,6 +23,16 @@ Graphic librairy accepted: OpenGL, Vulkan, or Metal.
 
 # Instructions
 
+Install GLAD and GLFW. Take the good version for your device.
+I all ready compile libs for x86_64_linux-gnu, if you don't have the same, complie the libs.
+
+move "local" folder at ~/ and execute this command
+```
+export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+```
+
+if you whant percice this command, add this command in your ~/.zshrc ou ~/.bashrc
+
 For build default model
 
 - make : compile with default model
